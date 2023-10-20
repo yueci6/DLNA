@@ -2,16 +2,10 @@ cmake_minimum_required(VERSION 3.22)
 project(SDL_Audio C)
 
 set(CMAKE_C_STANDARD 11)
-include_directories("/home/yueci/opt/x264-master/tmp/lib" "/home/yueci/opt/SDL2-2.0.14/tmp/include/SDL2" "/home/yueci/opt/ffmpeg-5.1/tmp/include")
+include_directories("/home/yueci/opt/x264-master/tmp/lib" "/home/yueci/opt/SDL2-2.0.14/tmp/include/SDL2" "/home/yueci/opt/ffmpeg-5.1/tmp/include" ${PROJECt_SOURCE_DIR}/include)
 set (SDL_Lib libSDL2.so)
 set (x264 libx264.so)
 set (FFmpeg_Lib libavcodec.so libavdevice.so libavfilter.so libavformat.so libavutil.so libpostproc.so libswresample.so libswscale.so)
 link_directories("/home/yueci/opt/SDL2-2.0.14/tmp/lib" "/home/yueci/opt/ffmpeg-5.1/tmp/lib" "/home/yueci/opt/x264-master/tmp/lib")
-add_executable(SDL_Audio play.c
-        queue.h
-        queue.c
-        queue.c
-        dlna.h
-        udp_seek_device.c
-        list.h)
+add_executable(SDL_Audio ${PROJECT_SOURCE_DIR})
 target_link_libraries (SDL_Audio ${x264} ${FFmpeg_Lib} ${SDL_Lib})
